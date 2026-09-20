@@ -1,0 +1,1916 @@
+<!DOCTYPE html >
+<html lang="en">
+<head <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>School Website</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <script>
+
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+        navLinks.style.right = "0";
+    }
+
+    function hideMenu() {
+        navLinks.style.right = "-250px";
+    }
+
+
+let eventPosition = 0;
+
+const eventTrack = document.getElementById("eventsTrack");
+const eventSlides = document.querySelectorAll(".event-slide");
+
+
+function getVisibleEvents() {
+
+    if (window.innerWidth <= 600) {
+        return 1;
+    }
+
+    if (window.innerWidth <= 1000) {
+        return 2;
+    }
+
+    return 4;
+}
+
+
+function updateEvents() {
+
+    const visible = getVisibleEvents();
+
+    const slideWidth =
+        eventSlides[0].offsetWidth + 15;
+
+    const maxPosition =
+        Math.max(0, eventSlides.length - visible);
+
+    if (eventPosition > maxPosition) {
+        eventPosition = 0;
+    }
+
+    eventTrack.style.transform =
+        `translateX(-${eventPosition * slideWidth}px)`;
+}
+
+
+function nextEvent() {
+
+    const visible = getVisibleEvents();
+
+    const maxPosition =
+        Math.max(0, eventSlides.length - visible);
+
+    eventPosition++;
+
+    if (eventPosition > maxPosition) {
+        eventPosition = 0;
+    }
+
+    updateEvents();
+}
+
+
+function previousEvent() {
+
+    const visible = getVisibleEvents();
+
+    const maxPosition =
+        Math.max(0, eventSlides.length - visible);
+
+    eventPosition--;
+
+    if (eventPosition < 0) {
+        eventPosition = maxPosition;
+    }
+
+    updateEvents();
+}
+
+
+/* AUTO SLIDE */
+
+setInterval(function () {
+
+    nextEvent();
+
+}, 3500);
+
+
+/* RESPONSIVE */
+
+window.addEventListener("resize", function () {
+
+    eventPosition = 0;
+
+    updateEvents();
+
+});
+
+
+window.addEventListener("load", function () {
+
+    updateEvents();
+
+});
+
+
+</script>
+
+<script>
+
+/* =========================================
+   RMIS HERO BACKGROUND SLIDER
+========================================= */
+
+const heroSlides =
+    document.querySelectorAll(".hero-slide");
+
+let heroSlideIndex = 0;
+
+
+function changeHeroSlide() {
+
+    if (heroSlides.length === 0) {
+        return;
+    }
+
+    heroSlides[heroSlideIndex]
+        .classList.remove("active");
+
+    heroSlideIndex++;
+
+    if (heroSlideIndex >= heroSlides.length) {
+        heroSlideIndex = 0;
+    }
+
+    heroSlides[heroSlideIndex]
+        .classList.add("active");
+}
+
+
+/* Change image every 5 seconds */
+
+setInterval(function () {
+
+    changeHeroSlide();
+
+}, 5000);
+
+
+
+/* =========================================
+   MOBILE MENU
+========================================= */
+
+const heroMenu =
+    document.getElementById("heroMenu");
+
+const heroNav =
+    document.querySelector(".hero-nav");
+
+
+if (heroMenu && heroNav) {
+
+    heroMenu.addEventListener("click", function () {
+
+        heroNav.classList.toggle("active");
+
+        const icon =
+            heroMenu.querySelector("i");
+
+        if (heroNav.classList.contains("active")) {
+
+            icon.classList.remove("fa-bars");
+
+            icon.classList.add("fa-xmark");
+
+        } else {
+
+            icon.classList.remove("fa-xmark");
+
+            icon.classList.add("fa-bars");
+
+        }
+
+    });
+
+}
+
+</script>
+    <body>
+    <!-- =========================================
+     RMIS FIRST SECTION
+========================================= -->
+
+<section class="rmis-hero" id="home">
+
+    <!-- 10 Background Slides -->
+    <div class="hero-slideshow">
+
+        <div class="hero-slide active"
+             style="background-image:url('IMAGE/back.png');"></div>
+
+        <div class="hero-slide"
+             style="background-image:url('IMAGE/s.jpeg');"></div>
+
+        <div class="hero-slide"
+             style="background-image:url('IMAGE/bbb.png');"></div>
+
+        <div class="hero-slide"
+             style="background-image:url('IMAGE/y.png');"></div>
+
+        <div class="hero-slide"
+             style="background-image:url('IMAGE/cc.jpeg');"></div>
+
+        <div class="hero-slide"
+             style="background-image:url('IMAGE/g.png');"></div>
+
+        <div class="hero-slide"
+             style="background-image:url('IMAGE/i.png');"></div>
+
+        <div class="hero-slide"
+             style="background-image:url('IMAGE/u.png');"></div>
+
+        <div class="hero-slide"
+             style="background-image:url('IMAGE/c.jpeg');"></div>
+
+        <div class="hero-slide"
+             style="background-image:url('IMAGE/uu.png');"></div>
+
+    </div>
+
+
+    <!-- Dark Overlay -->
+    <div class="hero-overlay"></div>
+
+
+    <!-- =====================================
+         TOP NOTICE BAR
+    ====================================== -->
+
+    <div class="rmis-topbar">
+
+        <div class="notice-area">
+
+            <span class="notice-label">
+                <i class="fa-solid fa-bell"></i>
+                NOTICE
+            </span>
+
+            <div class="notice-window">
+
+                <div class="notice-track">
+
+                    <a href="notice.html">
+                        Admission Open for Academic Session 2026–27
+                    </a>
+
+                    <a href="notice.html">
+                        New School Notices & Announcements
+                    </a>
+
+                    <a href="notice.html">
+                        Parent–Teacher Meeting Schedule
+                    </a>
+
+                    <a href="notice.html">
+                        Annual Sports Day Registration Open
+                    </a>
+
+                    <a href="notice.html">
+                        School Events & Celebrations Updates
+                    </a>
+
+                </div>
+
+            </div>
+
+            <a href="notice.html" class="all-notice">
+                ALL NOTICES
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+
+        <!-- Contact Information -->
+
+        <div class="top-contact">
+
+            <a href="mailto:officialrmis@gmail.com">
+                <i class="fa-solid fa-envelope"></i>
+                officialrmis@gmail.com
+            </a>
+
+            
+
+            <a href="tel:+919999999999">
+                <i class="fa-solid fa-phone"></i>
+                +91 7781970824
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         NAVIGATION
+    ====================================== -->
+
+    <header class="hero-header">
+
+        <a href="#home" class="hero-logo">
+            <img src="IMAGE/logo.png" alt="RMIS Logo">
+        </a>
+
+
+        <nav class="hero-nav">
+
+            <a href="#home">HOME</a>
+            <a href="#about">ABOUT</a>
+            <a href="#school">SCHOOL</a>
+            <a href="#academics">ACADEMICS</a>
+            <a href="#facilities">FACILITIES</a>
+            <a href="admission.html">ADMISSION</a>
+            <a href="fee-structure.html">FEE STRUCTURE</a>
+            <a href="fee-pay.html">FEE PAY</a>
+            <a href="erp.html">ERP</a>
+             <a href="#result">RESULT</a>
+             <a href="#examination">EXAMINATION</a>
+            <a href="#gallery">GALLERY</a>
+            <a href="#transport">TRANSPORT</a>
+            <a href="#blog">BLOG</a>
+            <a href="#career">CAREER</a>
+            <a href="#contact">CONTACT</a>
+
+        </nav>
+
+
+        <button class="hero-menu" id="heroMenu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </header>
+
+
+    <!-- =====================================
+         HERO CONTENT
+    ====================================== -->
+
+    <div class="hero-content">
+
+        <div class="hero-welcome">
+            WELCOME TO
+        </div>
+
+        <h1>
+            RAMJANKI MAHESHWARI
+            <span>INTERNATIONAL SCHOOL</span>
+        </h1>
+
+        <div class="hero-tagline">
+            LEARN <b>•</b> GROW <b>•</b> ACHIEVE
+        </div>
+
+        <p class="hero-description">
+            Empowering young minds through quality education,
+            innovation, character building and holistic development.
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a href="admission.html"
+               class="hero-btn primary-btn">
+
+                <i class="fa-solid fa-graduation-cap"></i>
+
+                APPLY FOR ADMISSION
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+            <a href="#school"
+               class="hero-btn secondary-btn">
+
+                <i class="fa-solid fa-school"></i>
+
+                EXPLORE SCHOOL
+
+                <i class="fa-solid fa-arrow-down"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- Scroll -->
+    <a href="#about" class="hero-scroll">
+
+        <span>SCROLL TO EXPLORE</span>
+
+        <i class="fa-solid fa-chevron-down"></i>
+
+    </a>
+
+</section>
+
+      <!--- about us content --->
+
+    <section class="SCHOOL-SECTION">
+
+    <h1>OUR SCHOOL</h1>
+    <p>RMIS offers quality education from Play School to Class 12.</p>
+
+    <div class="school-container">
+
+        <!-- 1. Pre-Primary -->
+        <div class="school-box">
+            <h2>PRE-PRIMARY SCHOOL</h2>
+            <p>Play Group – Nursery – LKG – UKG</p>
+            <a href="pre-primary.html">VIEW MORE</a>
+        </div>
+
+        <!-- 2. Primary -->
+        <div class="school-box">
+            <h2>PRIMARY SCHOOL</h2>
+            <p>Class 1 – Class 5</p>
+            <a href="primary.html">VIEW MORE</a>
+        </div>
+
+        <!-- 3. Secondary -->
+        <div class="school-box">
+            <h2>SECONDARY SCHOOL</h2>
+            <p>Class 6 – Class 10</p>
+            <a href="secondary.html">VIEW MORE</a>
+        </div>
+
+        <!-- 4. Senior Secondary -->
+        <div class="school-box">
+            <h2>SENIOR SECONDARY SCHOOL</h2>
+            <p>Class 11 – Class 12</p>
+            <a href="senior-secondary.html">VIEW MORE</a>
+        </div>
+
+    </div>
+
+
+
+</section>
+
+<!-- WHY CHOOSE RMIS SECTION -->
+<section class="why-rmis">
+
+    <h1>WHY CHOOSE RMIS?</h1>
+
+    <p class="why-subtitle">
+        Building strong foundations, developing skills and preparing students for a bright future.
+    </p>
+
+    <div class="why-container">
+
+        <div class="why-box">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>Quality Education</h2>
+            <p>
+                Quality education with a focus on academic excellence,
+                practical learning and overall development.
+            </p>
+        </div>
+
+        <div class="why-box">
+            <i class="fa-solid fa-chalkboard-user"></i>
+            <h2>Experienced Teachers</h2>
+            <p>
+                Dedicated teachers who guide students with modern
+                teaching methods and personal attention.
+            </p>
+        </div>
+
+        <div class="why-box">
+            <i class="fa-solid fa-flask"></i>
+            <h2>Modern Facilities</h2>
+            <p>
+                Smart classrooms, laboratories, library, computer
+                facilities and a student-friendly environment.
+            </p>
+        </div>
+
+        <div class="why-box">
+            <i class="fa-solid fa-child-reaching"></i>
+            <h2>Overall Development</h2>
+            <p>
+                Focus on academics, sports, cultural activities,
+                communication skills and personality development.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SCHOOL PARTNERSHIPS & COLLABORATIONS
+===================================================== -->
+
+<section class="partnership-section">
+
+    <div class="partnership-heading">
+
+        <span>
+            <i class="fa-solid fa-handshake"></i>
+            CONNECT • COLLABORATE • GROW
+        </span>
+
+        <h2>School Partnerships & Collaborations</h2>
+
+        <p>
+            Building meaningful partnerships that create better
+            learning experiences and future opportunities for students.
+        </p>
+
+    </div>
+
+
+    <div class="partnership-container">
+
+        <!-- CARD 1 -->
+
+        <div class="partnership-card academic">
+
+            <div class="partnership-content">
+
+                <div class="partnership-icon">
+                    <i class="fa-solid fa-school"></i>
+                </div>
+
+                <h3>Academic Partnerships</h3>
+
+                <p>
+                    Collaboration with educational institutions
+                    and academic organizations for enhanced learning.
+                </p>
+
+                <a href="IMAGE/vv.jpeg" class="partnership-btn">
+                    EXPLORE
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- CARD 2 -->
+
+        <div class="partnership-card career">
+
+            <div class="partnership-content">
+
+                <div class="partnership-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <h3>Career Guidance</h3>
+
+                <p>
+                    Helping students understand career pathways,
+                    competitive examinations and future opportunities.
+                </p>
+
+                <a href="IMAGE/c.jpeg" class="partnership-btn">
+                    EXPLORE
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- CARD 3 -->
+
+        <div class="partnership-card learning">
+
+            <div class="partnership-content">
+
+                <div class="partnership-icon">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                </div>
+
+                <h3>Learning Programs</h3>
+
+                <p>
+                    Enrichment programs, workshops and learning
+                    initiatives designed for student development.
+                </p>
+
+                <a href="IMAGE/l.jpeg" class="partnership-btn">
+                    VIEW PROGRAMS
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- CARD 4 -->
+
+        <div class="partnership-card future">
+
+            <div class="partnership-content">
+
+                <div class="partnership-icon">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+
+                <h3>Future Opportunities</h3>
+
+                <p>
+                    Connecting students with exposure, competitions,
+                    mentorship and opportunities beyond the classroom.
+                </p>
+
+                <a href="IMAGE/f.jpeg" class="partnership-btn">
+                    DISCOVER
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     OUR FACILITIES SECTION
+===================================== -->
+
+<section class="facilities-section">
+
+    <div class="facilities-heading">
+        <span>WHAT WE OFFER</span>
+
+        <h1>OUR FACILITIES</h1>
+
+        <p>
+            A safe, modern and inspiring environment designed to support
+            every student's learning, growth and success.
+        </p>
+    </div>
+
+
+    <div class="facilities-container">
+
+        <!-- 1 -->
+        <div class="facility-card classroom">
+
+            <div class="facility-content">
+
+                <div class="facility-icon">
+                    <i class="fa-solid fa-chalkboard"></i>
+                </div>
+
+                <h2>Smart Classrooms</h2>
+
+                <p>
+                    Interactive digital classrooms with modern
+                    teaching technology for better learning.
+                </p>
+
+                <a href="IMAGE/s.jpeg">Explore More <i class="fa-solid fa-arrow-right"></i></a>
+
+            </div>
+
+        </div>
+
+
+        <!-- 2 -->
+        <div class="facility-card laboratory">
+
+            <div class="facility-content">
+
+                <div class="facility-icon">
+                    <i class="fa-solid fa-flask"></i>
+                </div>
+
+                <h2>Science Laboratory</h2>
+
+                <p>
+                    Well-equipped science labs where students learn
+                    through practical experiments.
+                </p>
+
+                <a href="IMAGE/s.jpeg">Explore More <i class="fa-solid fa-arrow-right"></i></a>
+
+            </div>
+
+        </div>
+
+
+        <!-- 3 -->
+        <div class="facility-card computer">
+
+            <div class="facility-content">
+
+                <div class="facility-icon">
+                    <i class="fa-solid fa-computer"></i>
+                </div>
+
+                <h2>Computer Lab</h2>
+
+                <p>
+                    Modern computer facilities to develop digital
+                    skills and technological knowledge.
+                </p>
+
+                <a href="#">Explore More <i class="fa-solid fa-arrow-right"></i></a>
+
+            </div>
+
+        </div>
+
+
+        <!-- 4 -->
+        <div class="facility-card library">
+
+            <div class="facility-content">
+
+                <div class="facility-icon">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+
+                <h2>School Library</h2>
+
+                <p>
+                    A rich collection of books and resources that
+                    encourage reading and independent learning.
+                </p>
+
+                <a href="#">Explore More <i class="fa-solid fa-arrow-right"></i></a>
+
+            </div>
+
+        </div>
+
+
+        <!-- 5 -->
+        <div class="facility-card sports">
+
+            <div class="facility-content">
+
+                <div class="facility-icon">
+                    <i class="fa-solid fa-futbol"></i>
+                </div>
+
+                <h2>Sports & Playground</h2>
+
+                <p>
+                    Spacious sports facilities encouraging fitness,
+                    teamwork and healthy competition.
+                </p>
+
+                <a href="#">Explore More <i class="fa-solid fa-arrow-right"></i></a>
+
+            </div>
+
+        </div>
+
+
+        <!-- 6 -->
+        <div class="facility-card transport">
+
+            <div class="facility-content">
+
+                <div class="facility-icon">
+                    <i class="fa-solid fa-bus"></i>
+                </div>
+
+                <h2>School Transport</h2>
+
+                <p>
+                    Convenient and comfortable transportation support
+                    for students and families.
+                </p>
+
+                <a href="#">Explore More <i class="fa-solid fa-arrow-right"></i></a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     NEWS • EVENTS • MEDIA • ACHIEVEMENTS
+===================================================== -->
+
+<section class="news-media-section">
+
+    <!-- SECTION HEADING -->
+
+    <div class="news-section-heading">
+
+        <span>
+            <i class="fa-solid fa-newspaper"></i>
+            RMIS CAMPUS UPDATES
+        </span>
+
+        <h2>News, Events & Achievements</h2>
+
+        <p>
+            Discover the latest activities, celebrations, achievements
+            and memorable moments from RMIS.
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         TOP THREE FEATURE CARDS
+    ================================================== -->
+
+    <div class="news-feature-grid">
+
+
+        <!-- NEWS & EVENTS -->
+
+        <div class="news-feature-card">
+
+            <div class="feature-image">
+
+                <img src="IMAGE/g.png"
+                     alt="RMIS News and Events">
+
+                <span class="feature-tag">
+                    NEWS & EVENTS
+                </span>
+
+            </div>
+
+            <div class="feature-content">
+
+                <span class="feature-date">
+                    <i class="fa-regular fa-calendar"></i>
+                    LATEST UPDATES
+                </span>
+
+                <h3>
+                    News & Events
+                </h3>
+
+                <p>
+                    Stay updated with school activities,
+                    celebrations, workshops and important campus events.
+                </p>
+
+                <a href="news-events.html" class="feature-btn">
+                    VIEW EVENTS
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- MEDIA COVERAGE -->
+
+        <div class="news-feature-card">
+
+            <div class="feature-image">
+
+                <img src="IMAGE/k.jpeg"
+                     alt="RMIS Media Coverage">
+
+                <span class="feature-tag">
+                    MEDIA COVERAGE
+                </span>
+
+            </div>
+
+            <div class="feature-content">
+
+                <span class="feature-date">
+                    <i class="fa-solid fa-camera"></i>
+                    RMIS IN MEDIA
+                </span>
+
+                <h3>
+                    Media Coverage
+                </h3>
+
+                <p>
+                    Explore school achievements, special events
+                    and activities featured across media platforms.
+                </p>
+
+                <a href="media.html" class="feature-btn">
+                    VIEW COVERAGE
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACHIEVEMENTS -->
+
+        <div class="news-feature-card">
+
+            <div class="feature-image">
+
+                <img src="IMAGE/cc.jpeg"
+                     alt="RMIS Student Achievements">
+
+                <span class="feature-tag">
+                    ACHIEVEMENTS
+                </span>
+
+            </div>
+
+            <div class="feature-content">
+
+                <span class="feature-date">
+                    <i class="fa-solid fa-trophy"></i>
+                    STUDENT SUCCESS
+                </span>
+
+                <h3>
+                    Our Achievements
+                </h3>
+
+                <p>
+                    Celebrating the achievements, talents and
+                    accomplishments of our students and school community.
+                </p>
+
+                <a href="achievements.html" class="feature-btn">
+                    VIEW ACHIEVEMENTS
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ALL EVENTS SLIDER
+    ================================================== -->
+
+    <div class="events-area">
+
+        <div class="events-title-row">
+
+            <div>
+
+                <span class="events-small-title">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    CAMPUS LIFE
+                </span>
+
+                <h2>
+                    All Events & Celebrations
+                </h2>
+
+            </div>
+
+
+            <div class="slider-buttons">
+
+                <button onclick="previousEvent()"
+                        aria-label="Previous event">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <button onclick="nextEvent()"
+                        aria-label="Next event">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- SLIDER -->
+
+        <div class="events-slider">
+
+            <div class="events-track" id="eventsTrack">
+
+
+                <!-- EVENT 1 -->
+
+                <div class="event-slide">
+
+                    <img src="IMAGE/ga.jpeg"
+                         alt="Republic Day Celebration">
+
+                    <div class="event-overlay">
+
+                        <span>
+                            NATIONAL CELEBRATION
+                        </span>
+
+                        <h3>
+                            Republic Day
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 2 -->
+
+                <div class="event-slide">
+
+                    <img src="IMAGE/g.jpeg"
+                         alt="Independence Day Celebration">
+
+                    <div class="event-overlay">
+
+                        <span>
+                            NATIONAL CELEBRATION
+                        </span>
+
+                        <h3>
+                            Independence Day
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 3 -->
+
+                <div class="event-slide">
+
+                    <img src="IMAGE/gg.jpeg"
+                         alt="Annual Function">
+
+                    <div class="event-overlay">
+
+                        <span>
+                            SCHOOL EVENT
+                        </span>
+
+                        <h3>
+                            Annual Function
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 4 -->
+
+                <div class="event-slide">
+
+                    <img src="IMAGE/s.jpeg"
+                         alt="Sports Day">
+
+                    <div class="event-overlay">
+
+                        <span>
+                            SPORTS
+                        </span>
+
+                        <h3>
+                            Annual Sports Day
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 5 -->
+
+                <div class="event-slide">
+
+                    <img src="IMAGE/cc.jpeg"
+                         alt="Teachers Day">
+
+                    <div class="event-overlay">
+
+                        <span>
+                            CELEBRATION
+                        </span>
+
+                        <h3>
+                            Teachers' Day
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 6 -->
+
+                <div class="event-slide">
+
+                    <img src="IMAGE/cc.jpeg"
+                         alt="Children's Day">
+
+                    <div class="event-overlay">
+
+                        <span>
+                            STUDENT CELEBRATION
+                        </span>
+
+                        <h3>
+                            Children's Day
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 7 -->
+
+                <div class="event-slide">
+
+                    <img src="IMAGE/lab c.jpeg"
+                         alt="Festival Celebration">
+
+                    <div class="event-overlay">
+
+                        <span>
+                            CULTURAL EVENT
+                        </span>
+
+                        <h3>
+                            Cultural Celebrations
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 8 -->
+
+                <div class="event-slide">
+
+                    <img src="IMAGE/i.png"
+                         alt="Science Exhibition">
+
+                    <div class="event-overlay">
+
+                        <span>
+                            ACADEMIC EVENT
+                        </span>
+
+                        <h3>
+                            Science Exhibition
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- VIEW ALL -->
+
+        <div class="all-events-button">
+
+            <a href="events.html">
+                VIEW ALL EVENTS
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     SCHOOL LEADERSHIP SECTION
+========================================= -->
+
+<!-- =====================================
+     OUR LEADERSHIP
+===================================== -->
+
+<section class="leadership-section">
+
+    <div class="leadership-heading">
+
+        <span>OUR LEADERSHIP</span>
+
+        <h1>PRINCIPAL'S MESSAGE</h1>
+
+        <p>
+            Meet the academic leaders who guide our students
+            towards learning, growth and success.
+        </p>
+
+    </div>
+
+
+    <div class="leadership-container">
+
+        <!-- PRE-PRIMARY -->
+        <div class="leader-card pre-primary">
+
+            <div class="leader-content">
+
+                <div class="leader-icon">
+                    <i class="fa-solid fa-child-reaching"></i>
+                </div>
+
+                <span>PRE-PRIMARY SCHOOL</span>
+
+                <h2>Principal's Message</h2>
+
+                <h3>Mrs. []</h3>
+
+                <p class="experience-text">
+                    <i class="fa-solid fa-award"></i>
+                    2+ Years Experience
+                </p>
+
+                <p>
+                    We create a joyful and caring environment where
+                    young learners can explore, learn and grow with
+                    confidence.
+                </p>
+
+                <a href="#">
+                    Read Message
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRIMARY -->
+        <div class="leader-card primary">
+
+            <div class="leader-content">
+
+                <div class="leader-icon">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+
+                <span>PRIMARY SCHOOL</span>
+
+                <h2>Principal's Message</h2>
+
+                <h3>Mr. [Principal Name]</h3>
+
+                <p class="experience-text">
+                    <i class="fa-solid fa-award"></i>
+                    5+ Years Experience
+                </p>
+
+                <p>
+                    Our focus is to develop curious, confident and
+                    responsible learners through meaningful
+                    educational experiences.
+                </p>
+
+                <a href="#">
+                    Read Message
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- SECONDARY -->
+        <div class="leader-card secondary">
+
+            <div class="leader-content">
+
+                <div class="leader-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <span>SECONDARY SCHOOL</span>
+
+                <h2>Principal's Message</h2>
+
+                <h3>Mr./Mrs. [Principal Name]</h3>
+
+                <p class="experience-text">
+                    <i class="fa-solid fa-award"></i>
+                    8+ Years Experience
+                </p>
+
+                <p>
+                    We prepare students for academic excellence
+                    while developing leadership, communication and
+                    problem-solving skills.
+                </p>
+
+                <a href="#">
+                    Read Message
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- SENIOR SECONDARY -->
+        <div class="leader-card senior-secondary">
+
+            <div class="leader-content">
+
+                <div class="leader-icon">
+                    <i class="fa-solid fa-user-graduate"></i>
+                </div>
+
+                <span>SENIOR SECONDARY SCHOOL</span>
+
+                <h2>Principal's Message</h2>
+
+                <h3>Mr./Mrs. [Principal Name]</h3>
+
+                <p class="experience-text">
+                    <i class="fa-solid fa-award"></i>
+                    8+ Years Experience
+                </p>
+
+                <p>
+                    Our aim is to guide students in their academic
+                    journey and help them prepare for their future
+                    careers and goals.
+                </p>
+
+                <a href="#">
+                    Read Message
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- SCHOOL DIRECTOR -->
+        <div class="leader-card director">
+
+            <div class="leader-content">
+
+                <div class="leader-icon">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+
+                <span>SCHOOL MANAGEMENT</span>
+
+                <h2>Director's Message</h2>
+
+                <h3>Dr MUKESH KUMAR YADAV</h3>
+
+                <p class="experience-text">
+                    <i class="fa-solid fa-award"></i>
+                    5+ Years Experience
+                </p>
+
+                <p>
+                    Our vision is to create an inspiring educational
+                    environment where knowledge, values, innovation
+                    and character development come together.
+                </p>
+
+                <a href="#">
+                    Read Message
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= COMPETITIVE PREPARATION SECTION ================= -->
+
+<section class="prep-section" id="preparation">
+
+    <div class="prep-heading">
+        <span>ACADEMIC & COMPETITIVE PREPARATION</span>
+        <h2>PLAY SCHOOL TO CLASS 12</h2>
+        <p>
+            Strong academic foundation with school-level learning and
+            preparation for major entrance examinations and universities.
+        </p>
+    </div>
+
+    <div class="prep-container">
+
+        <!-- FOUNDATION -->
+        <div class="prep-card foundation">
+            <div class="prep-overlay">
+                <div class="prep-icon">📚</div>
+                <h3>Play School – Class 5</h3>
+                <p>Foundation & Concept Building</p>
+
+                <div class="prep-details">
+                    <span>✓ Basic Mathematics</span>
+                    <span>✓ English & Communication</span>
+                    <span>✓ Science Foundation</span>
+                    <span>✓ General Awareness</span>
+                </div>
+
+                <a href="#foundation" class="prep-btn">
+                    VIEW PROGRAM
+                </a>
+            </div>
+        </div>
+
+
+        <!-- MIDDLE SCHOOL -->
+        <div class="prep-card middle">
+            <div class="prep-overlay">
+                <div class="prep-icon">🎓</div>
+                <h3>Class 6 – 8</h3>
+                <p>Academic Foundation Program</p>
+
+                <div class="prep-details">
+                    <span>✓ Maths & Science</span>
+                    <span>✓ Reasoning</span>
+                    <span>✓ Olympiad Foundation</span>
+                    <span>✓ Competitive Skills</span>
+                </div>
+
+                <a href="#middle" class="prep-btn">
+                    VIEW PROGRAM
+                </a>
+            </div>
+        </div>
+
+
+        <!-- CLASS 9-10 -->
+        <div class="prep-card secondary-prep">
+            <div class="prep-overlay">
+                <div class="prep-icon">🏫</div>
+                <h3>Class 9 – 10</h3>
+                <p>Competitive Foundation</p>
+
+                <div class="prep-details">
+                    <span>✓ CBSE / Board Preparation</span>
+                    <span>✓ JEE Foundation</span>
+                    <span>✓ NEET Foundation</span>
+                    <span>✓ NDA Foundation</span>
+                </div>
+
+                <a href="#class10" class="prep-btn">
+                    VIEW PROGRAM
+                </a>
+            </div>
+        </div>
+
+
+        <!-- CLASS 11-12 -->
+        <div class="prep-card senior-prep">
+            <div class="prep-overlay">
+                <div class="prep-icon">🎯</div>
+                <h3>Class 11 – 12</h3>
+                <p>Entrance Exam Preparation</p>
+
+                <div class="prep-details">
+                    <span>✓ JEE Main / Advanced</span>
+                    <span>✓ NEET</span>
+                    <span>✓ NDA</span>
+                    <span>✓ CUET</span>
+                </div>
+
+                <a href="#class12" class="prep-btn">
+                    VIEW PROGRAM
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- TARGET EXAMS / UNIVERSITIES -->
+
+    <div class="target-area">
+
+        <h3>MAJOR EXAMS & UNIVERSITY PATHWAYS</h3>
+
+        <div class="target-buttons">
+
+            <a href="#jee">JEE</a>
+            <a href="#neet">NEET</a>
+            <a href="#nda">NDA</a>
+            <a href="#cuet">CUET</a>
+
+            <a href="#bhu">BHU</a>
+            <a href="#jnu">JNU</a>
+            <a href="#jamia">JAMIA</a>
+            <a href="#amu">AMU</a>
+
+            <a href="#government">OTHER GOVERNMENT</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     ADMISSION OPEN SECTION
+===================================================== -->
+
+<section class="admission-open">
+
+    <div class="admission-content">
+
+        <span class="admission-label">
+            <i class="fa-solid fa-graduation-cap"></i>
+            ADMISSIONS OPEN • 2027–28
+        </span>
+
+        <h2>Admissions Are Open</h2>
+
+        <p>
+            Give your child the right start for a bright future.
+        </p>
+
+        <div class="admission-buttons">
+
+            <a href="admission.html" class="admission-primary">
+                APPLY NOW
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <a href="contact.html" class="admission-secondary">
+                ENQUIRE NOW
+                <i class="fa-regular fa-paper-plane"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     RMIS PREMIUM FOOTER
+===================================================== -->
+
+<footer class="rmis-footer">
+
+    <div class="footer-main">
+
+        <!-- ================= SCHOOL INFO ================= -->
+
+        <div class="footer-brand">
+
+            <img src="IMAGE/logo.png"
+                 alt="RMIS Logo"
+                 class="footer-logo">
+
+            <h3>Ramjanki Maheshwari International School</h3>
+
+            <p class="footer-about">
+                Ramjanki Maheshwari International School is committed
+                to providing quality education, strong academic
+                foundations and holistic development for every student.
+            </p>
+
+            <div class="footer-social">
+
+                <a href="#" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#" aria-label="X Twitter">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+
+                <a href="#" aria-label="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+
+                <a href="#" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+
+                <a href="#" aria-label="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= QUICK LINKS ================= -->
+
+        <div class="footer-column">
+
+            <h4>QUICK LINKS</h4>
+
+            <span class="footer-line"></span>
+
+            <a href="index.html">
+                <i class="fa-solid fa-angle-right"></i>
+                Home
+            </a>
+
+            <a href="about.html">
+                <i class="fa-solid fa-angle-right"></i>
+                About Us
+            </a>
+
+            <a href="school.html">
+                <i class="fa-solid fa-angle-right"></i>
+                Our School
+            </a>
+
+            <a href="academics.html">
+                <i class="fa-solid fa-angle-right"></i>
+                Academics
+            </a>
+
+            <a href="facilities.html">
+                <i class="fa-solid fa-angle-right"></i>
+                Facilities
+            </a>
+
+            <a href="gallery.html">
+                <i class="fa-solid fa-angle-right"></i>
+                Gallery
+            </a>
+
+            <a href="contact.html">
+                <i class="fa-solid fa-angle-right"></i>
+                Contact Us
+            </a>
+
+        </div>
+
+
+        <!-- ================= STUDENT / OTHER LINKS ================= -->
+
+        <div class="footer-column">
+
+            <h4>STUDENT LINKS</h4>
+
+            <span class="footer-line"></span>
+
+            <a href="admission.html">
+                <i class="fa-solid fa-angle-right"></i>
+                Admission
+            </a>
+
+            <a href="fee-structure.html">
+                <i class="fa-solid fa-angle-right"></i>
+                Fee Structure
+            </a>
+
+            <a href="fee-pay.html">
+                <i class="fa-solid fa-angle-right"></i>
+                Fee Payment
+            </a>
+
+            <a href="erp.html">
+                <i class="fa-solid fa-angle-right"></i>
+                Student ERP
+            </a>
+
+            <a href="notice.html">
+                <i class="fa-solid fa-angle-right"></i>
+                Notices
+            </a>
+
+            <a href="career.html">
+                <i class="fa-solid fa-angle-right"></i>
+                Career
+            </a>
+
+            <a href="blog.html">
+                <i class="fa-solid fa-angle-right"></i>
+                School Blog
+            </a>
+
+        </div>
+
+
+        <!-- ================= COURSES ================= -->
+
+        <div class="footer-column">
+
+            <h4>ACADEMIC PROGRAMS</h4>
+
+            <span class="footer-line"></span>
+
+            <a href="#">
+                <i class="fa-solid fa-angle-right"></i>
+                Play School
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-angle-right"></i>
+                Primary School
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-angle-right"></i>
+                Class 6 – 8
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-angle-right"></i>
+                Class 9 – 10
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-angle-right"></i>
+                Class 11 – 12
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-angle-right"></i>
+                Competitive Preparation
+            </a>
+
+        </div>
+
+
+        <!-- ================= CONTACT + MAP ================= -->
+
+        <div class="footer-contact">
+
+            <h4>FIND US</h4>
+
+            <span class="footer-line"></span>
+
+
+            <!-- ADDRESS -->
+
+            <div class="contact-item">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <div>
+                    <strong>ADDRESS</strong>
+
+                    <p>
+                        Ramjanki Maheshwari International School,SANKHE BAZAR  GOPALGANJ  ,
+                         BIHAR, India
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- PHONE -->
+
+            <div class="contact-item">
+
+                <i class="fa-solid fa-phone"></i>
+
+                <div>
+                    <strong>PHONE</strong>
+
+                    <p>
+                        +91 7781970824
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="contact-item">
+
+                <i class="fa-solid fa-envelope"></i>
+
+                <div>
+                    <strong>EMAIL</strong>
+
+                    <p>
+                        info@rmischool.com
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- GOOGLE FORM -->
+
+            <a href="#"
+               class="google-form-btn">
+
+                <i class="fa-brands fa-google"></i>
+
+                <span>
+                    Admission / Enquiry Form
+                </span>
+
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+            </a>
+
+
+            <!-- LIVE GOOGLE MAP -->
+<div class="map-box">
+
+    <iframe
+        src="https://maps.app.goo.gl/LwkY8VYUQBmRN7Ja7?g_st=ac"
+        width="100%"
+        height="180"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+
+</div>
+
+<a
+    href="https://maps.app.goo.gl/LwkY8VYUQBmRN7Ja7?g_st=ac"
+    target="_blank"
+    class="map-button">
+
+    <i class="fa-solid fa-location-dot"></i>
+    OPEN IN GOOGLE MAPS
+    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FOOTER BOTTOM ================= -->
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026
+            <strong>RMIS</strong>
+                            —                   Ramjanki Maheshwari International School.
+                                         All Rights Reserved.
+        </p>
+
+        <div class="bottom-links">
+
+            <a href="#">Privacy Policy</a>
+
+            <span>|</span>
+
+            <a href="#">Terms & Conditions</a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+    </body>
+</html>
