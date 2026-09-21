@@ -1,207 +1,12 @@
 <!DOCTYPE html >
 <html lang="en">
-<head <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>School Website</title>
     <link rel="stylesheet" href="style.css">
     </head>
-    <script>
-
-    var navLinks = document.getElementById("navLinks");
-
-    function showMenu() {
-        navLinks.style.right = "0";
-    }
-
-    function hideMenu() {
-        navLinks.style.right = "-250px";
-    }
-
-
-let eventPosition = 0;
-
-const eventTrack = document.getElementById("eventsTrack");
-const eventSlides = document.querySelectorAll(".event-slide");
-
-
-function getVisibleEvents() {
-
-    if (window.innerWidth <= 600) {
-        return 1;
-    }
-
-    if (window.innerWidth <= 1000) {
-        return 2;
-    }
-
-    return 4;
-}
-
-
-function updateEvents() {
-
-    const visible = getVisibleEvents();
-
-    const slideWidth =
-        eventSlides[0].offsetWidth + 15;
-
-    const maxPosition =
-        Math.max(0, eventSlides.length - visible);
-
-    if (eventPosition > maxPosition) {
-        eventPosition = 0;
-    }
-
-    eventTrack.style.transform =
-        `translateX(-${eventPosition * slideWidth}px)`;
-}
-
-
-function nextEvent() {
-
-    const visible = getVisibleEvents();
-
-    const maxPosition =
-        Math.max(0, eventSlides.length - visible);
-
-    eventPosition++;
-
-    if (eventPosition > maxPosition) {
-        eventPosition = 0;
-    }
-
-    updateEvents();
-}
-
-
-function previousEvent() {
-
-    const visible = getVisibleEvents();
-
-    const maxPosition =
-        Math.max(0, eventSlides.length - visible);
-
-    eventPosition--;
-
-    if (eventPosition < 0) {
-        eventPosition = maxPosition;
-    }
-
-    updateEvents();
-}
-
-
-/* AUTO SLIDE */
-
-setInterval(function () {
-
-    nextEvent();
-
-}, 3500);
-
-
-/* RESPONSIVE */
-
-window.addEventListener("resize", function () {
-
-    eventPosition = 0;
-
-    updateEvents();
-
-});
-
-
-window.addEventListener("load", function () {
-
-    updateEvents();
-
-});
-
-
-</script>
-
-<script>
-
-/* =========================================
-   RMIS HERO BACKGROUND SLIDER
-========================================= */
-
-const heroSlides =
-    document.querySelectorAll(".hero-slide");
-
-let heroSlideIndex = 0;
-
-
-function changeHeroSlide() {
-
-    if (heroSlides.length === 0) {
-        return;
-    }
-
-    heroSlides[heroSlideIndex]
-        .classList.remove("active");
-
-    heroSlideIndex++;
-
-    if (heroSlideIndex >= heroSlides.length) {
-        heroSlideIndex = 0;
-    }
-
-    heroSlides[heroSlideIndex]
-        .classList.add("active");
-}
-
-
-/* Change image every 5 seconds */
-
-setInterval(function () {
-
-    changeHeroSlide();
-
-}, 5000);
-
-
-
-/* =========================================
-   MOBILE MENU
-========================================= */
-
-const heroMenu =
-    document.getElementById("heroMenu");
-
-const heroNav =
-    document.querySelector(".hero-nav");
-
-
-if (heroMenu && heroNav) {
-
-    heroMenu.addEventListener("click", function () {
-
-        heroNav.classList.toggle("active");
-
-        const icon =
-            heroMenu.querySelector("i");
-
-        if (heroNav.classList.contains("active")) {
-
-            icon.classList.remove("fa-bars");
-
-            icon.classList.add("fa-xmark");
-
-        } else {
-
-            icon.classList.remove("fa-xmark");
-
-            icon.classList.add("fa-bars");
-
-        }
-
-    });
-
-}
-
-</script>
     <body>
     <!-- =========================================
      RMIS FIRST SECTION
@@ -435,28 +240,28 @@ if (heroMenu && heroNav) {
     <div class="school-container">
 
         <!-- 1. Pre-Primary -->
-        <div class="school-box">
+        <div class="school-box rmis-sliding-card" data-images="IMAGE/ga.jpeg|IMAGE/g.jpeg|IMAGE/gg.jpeg|IMAGE/s.jpeg">
             <h2>PRE-PRIMARY SCHOOL</h2>
             <p>Play Group – Nursery – LKG – UKG</p>
             <a href="pre-primary.html">VIEW MORE</a>
         </div>
 
         <!-- 2. Primary -->
-        <div class="school-box">
+        <div class="school-box rmis-sliding-card" data-images="IMAGE/ga.jpeg|IMAGE/g.jpeg|IMAGE/gg.jpeg|IMAGE/s.jpeg">
             <h2>PRIMARY SCHOOL</h2>
             <p>Class 1 – Class 5</p>
             <a href="primary.html">VIEW MORE</a>
         </div>
 
         <!-- 3. Secondary -->
-        <div class="school-box">
+        <div class="school-box rmis-sliding-card" data-images="IMAGE/ga.jpeg|IMAGE/g.jpeg|IMAGE/gg.jpeg|IMAGE/s.jpeg">
             <h2>SECONDARY SCHOOL</h2>
             <p>Class 6 – Class 10</p>
             <a href="secondary.html">VIEW MORE</a>
         </div>
 
         <!-- 4. Senior Secondary -->
-        <div class="school-box">
+        <div class="school-box rmis-sliding-card" data-images="IMAGE/ga.jpeg|IMAGE/g.jpeg|IMAGE/gg.jpeg|IMAGE/s.jpeg">
             <h2>SENIOR SECONDARY SCHOOL</h2>
             <p>Class 11 – Class 12</p>
             <a href="senior-secondary.html">VIEW MORE</a>
@@ -479,7 +284,7 @@ if (heroMenu && heroNav) {
 
     <div class="why-container">
 
-        <div class="why-box">
+        <div class="why-box rmis-sliding-card" data-images="IMAGE/c.jpeg|IMAGE/cc.jpeg|IMAGE/f.jpeg|IMAGE/i.png">
             <i class="fa-solid fa-graduation-cap"></i>
             <h2>Quality Education</h2>
             <p>
@@ -488,7 +293,7 @@ if (heroMenu && heroNav) {
             </p>
         </div>
 
-        <div class="why-box">
+        <div class="why-box rmis-sliding-card" data-images="IMAGE/c.jpeg|IMAGE/cc.jpeg|IMAGE/f.jpeg|IMAGE/i.png">
             <i class="fa-solid fa-chalkboard-user"></i>
             <h2>Experienced Teachers</h2>
             <p>
@@ -497,7 +302,7 @@ if (heroMenu && heroNav) {
             </p>
         </div>
 
-        <div class="why-box">
+        <div class="why-box rmis-sliding-card" data-images="IMAGE/c.jpeg|IMAGE/cc.jpeg|IMAGE/f.jpeg|IMAGE/i.png">
             <i class="fa-solid fa-flask"></i>
             <h2>Modern Facilities</h2>
             <p>
@@ -506,7 +311,7 @@ if (heroMenu && heroNav) {
             </p>
         </div>
 
-        <div class="why-box">
+        <div class="why-box rmis-sliding-card" data-images="IMAGE/c.jpeg|IMAGE/cc.jpeg|IMAGE/f.jpeg|IMAGE/i.png">
             <i class="fa-solid fa-child-reaching"></i>
             <h2>Overall Development</h2>
             <p>
@@ -547,7 +352,7 @@ if (heroMenu && heroNav) {
 
         <!-- CARD 1 -->
 
-        <div class="partnership-card academic">
+        <div class="partnership-card academic rmis-sliding-card" data-images="IMAGE/vv.jpeg|IMAGE/c.jpeg|IMAGE/l.jpeg|IMAGE/f.jpeg">
 
             <div class="partnership-content">
 
@@ -574,7 +379,7 @@ if (heroMenu && heroNav) {
 
         <!-- CARD 2 -->
 
-        <div class="partnership-card career">
+        <div class="partnership-card career rmis-sliding-card" data-images="IMAGE/c.jpeg|IMAGE/s.jpeg|IMAGE/cc.jpeg|IMAGE/i.png">
 
             <div class="partnership-content">
 
@@ -601,7 +406,7 @@ if (heroMenu && heroNav) {
 
         <!-- CARD 3 -->
 
-        <div class="partnership-card learning">
+        <div class="partnership-card learning rmis-sliding-card" data-images="IMAGE/l.jpeg|IMAGE/s.jpeg|IMAGE/c.jpeg|IMAGE/g.jpeg">
 
             <div class="partnership-content">
 
@@ -628,7 +433,7 @@ if (heroMenu && heroNav) {
 
         <!-- CARD 4 -->
 
-        <div class="partnership-card future">
+        <div class="partnership-card future rmis-sliding-card" data-images="IMAGE/f.jpeg|IMAGE/gg.jpeg|IMAGE/cc.jpeg|IMAGE/y.png">
 
             <div class="partnership-content">
 
@@ -677,7 +482,7 @@ if (heroMenu && heroNav) {
     <div class="facilities-container">
 
         <!-- 1 -->
-        <div class="facility-card classroom">
+        <div class="facility-card classroom rmis-sliding-card" data-images="IMAGE/s.jpeg|IMAGE/ga.jpeg|IMAGE/g.jpeg|IMAGE/c.jpeg">
 
             <div class="facility-content">
 
@@ -700,7 +505,7 @@ if (heroMenu && heroNav) {
 
 
         <!-- 2 -->
-        <div class="facility-card laboratory">
+        <div class="facility-card laboratory rmis-sliding-card" data-images="IMAGE/lab c.jpeg|IMAGE/lab.jpeg|IMAGE/s.jpeg|IMAGE/c.jpeg">
 
             <div class="facility-content">
 
@@ -723,7 +528,7 @@ if (heroMenu && heroNav) {
 
 
         <!-- 3 -->
-        <div class="facility-card computer">
+        <div class="facility-card computer rmis-sliding-card" data-images="IMAGE/computer.jpeg|IMAGE/c.jpeg|IMAGE/i.png|IMAGE/s.jpeg">
 
             <div class="facility-content">
 
@@ -746,7 +551,7 @@ if (heroMenu && heroNav) {
 
 
         <!-- 4 -->
-        <div class="facility-card library">
+        <div class="facility-card library rmis-sliding-card" data-images="IMAGE/l.jpeg|IMAGE/gg.jpeg|IMAGE/c.jpeg|IMAGE/vv.jpeg">
 
             <div class="facility-content">
 
@@ -769,7 +574,7 @@ if (heroMenu && heroNav) {
 
 
         <!-- 5 -->
-        <div class="facility-card sports">
+        <div class="facility-card sports rmis-sliding-card" data-images="IMAGE/f.jpeg|IMAGE/ga.jpeg|IMAGE/g.jpeg|IMAGE/cc.jpeg">
 
             <div class="facility-content">
 
@@ -792,7 +597,7 @@ if (heroMenu && heroNav) {
 
 
         <!-- 6 -->
-        <div class="facility-card transport">
+        <div class="facility-card transport rmis-sliding-card" data-images="IMAGE/bus.jpeg|IMAGE/y.png|IMAGE/f.jpeg|IMAGE/ga.jpeg">
 
             <div class="facility-content">
 
@@ -852,7 +657,7 @@ if (heroMenu && heroNav) {
 
         <!-- NEWS & EVENTS -->
 
-        <div class="news-feature-card">
+        <div class="news-feature-card rmis-sliding-card" data-images="IMAGE/g.png|IMAGE/ga.jpeg|IMAGE/gg.jpeg">
 
             <div class="feature-image">
 
@@ -893,7 +698,7 @@ if (heroMenu && heroNav) {
 
         <!-- MEDIA COVERAGE -->
 
-        <div class="news-feature-card">
+        <div class="news-feature-card rmis-sliding-card" data-images="IMAGE/k.jpeg|IMAGE/g.jpeg|IMAGE/c.jpeg">
 
             <div class="feature-image">
 
@@ -934,7 +739,7 @@ if (heroMenu && heroNav) {
 
         <!-- ACHIEVEMENTS -->
 
-        <div class="news-feature-card">
+        <div class="news-feature-card rmis-sliding-card" data-images="IMAGE/cc.jpeg|IMAGE/f.jpeg|IMAGE/i.png">
 
             <div class="feature-image">
 
@@ -1243,7 +1048,7 @@ if (heroMenu && heroNav) {
     <div class="leadership-container">
 
         <!-- PRE-PRIMARY -->
-        <div class="leader-card pre-primary">
+        <div class="leader-card pre-primary rmis-sliding-card" data-images="IMAGE/ga.jpeg|IMAGE/g.jpeg|IMAGE/s.jpeg">
 
             <div class="leader-content">
 
@@ -1279,7 +1084,7 @@ if (heroMenu && heroNav) {
 
 
         <!-- PRIMARY -->
-        <div class="leader-card primary">
+        <div class="leader-card primary rmis-sliding-card" data-images="IMAGE/c.jpeg|IMAGE/cc.jpeg|IMAGE/g.jpeg">
 
             <div class="leader-content">
 
@@ -1315,7 +1120,7 @@ if (heroMenu && heroNav) {
 
 
         <!-- SECONDARY -->
-        <div class="leader-card secondary">
+        <div class="leader-card secondary rmis-sliding-card" data-images="IMAGE/lab.jpeg|IMAGE/computer.jpeg|IMAGE/i.png">
 
             <div class="leader-content">
 
@@ -1351,7 +1156,7 @@ if (heroMenu && heroNav) {
 
 
         <!-- SENIOR SECONDARY -->
-        <div class="leader-card senior-secondary">
+        <div class="leader-card senior-secondary rmis-sliding-card" data-images="IMAGE/gg.jpeg|IMAGE/s.jpeg|IMAGE/c.jpeg">
 
             <div class="leader-content">
 
@@ -1387,7 +1192,7 @@ if (heroMenu && heroNav) {
 
 
         <!-- SCHOOL DIRECTOR -->
-        <div class="leader-card director">
+        <div class="leader-card director rmis-sliding-card" data-images="IMAGE/vv.jpeg|IMAGE/f.jpeg|IMAGE/ga.jpeg">
 
             <div class="leader-content">
 
@@ -1441,7 +1246,7 @@ if (heroMenu && heroNav) {
     <div class="prep-container">
 
         <!-- FOUNDATION -->
-        <div class="prep-card foundation">
+        <div class="prep-card foundation rmis-sliding-card" data-images="IMAGE/s.jpeg|IMAGE/c.jpeg|IMAGE/g.jpeg|IMAGE/l.jpeg">
             <div class="prep-overlay">
                 <div class="prep-icon">📚</div>
                 <h3>Play School – Class 5</h3>
@@ -1462,7 +1267,7 @@ if (heroMenu && heroNav) {
 
 
         <!-- MIDDLE SCHOOL -->
-        <div class="prep-card middle">
+        <div class="prep-card middle rmis-sliding-card" data-images="IMAGE/c.jpeg|IMAGE/s.jpeg|IMAGE/cc.jpeg|IMAGE/g.jpeg">
             <div class="prep-overlay">
                 <div class="prep-icon">🎓</div>
                 <h3>Class 6 – 8</h3>
@@ -1483,7 +1288,7 @@ if (heroMenu && heroNav) {
 
 
         <!-- CLASS 9-10 -->
-        <div class="prep-card secondary-prep">
+        <div class="prep-card secondary-prep rmis-sliding-card" data-images="IMAGE/lab.jpeg|IMAGE/computer.jpeg|IMAGE/c.jpeg|IMAGE/i.png">
             <div class="prep-overlay">
                 <div class="prep-icon">🏫</div>
                 <h3>Class 9 – 10</h3>
@@ -1504,7 +1309,7 @@ if (heroMenu && heroNav) {
 
 
         <!-- CLASS 11-12 -->
-        <div class="prep-card senior-prep">
+        <div class="prep-card senior-prep rmis-sliding-card" data-images="IMAGE/gg.jpeg|IMAGE/f.jpeg|IMAGE/cc.jpeg|IMAGE/g.jpeg">
             <div class="prep-overlay">
                 <div class="prep-icon">🎯</div>
                 <h3>Class 11 – 12</h3>
@@ -1912,5 +1717,173 @@ if (heroMenu && heroNav) {
 
 </footer>
 
-    </body>
+    
+<script>
+/* =========================================================
+   RMIS PREMIUM SECTION SLIDERS + MOBILE MENU
+   Background changes every 5 seconds on all major sections.
+========================================================= */
+document.addEventListener('DOMContentLoaded', function () {
+
+    const sectionImages = [
+        'IMAGE/back.png',
+        'IMAGE/s.jpeg',
+        'IMAGE/c.jpeg',
+        'IMAGE/cc.jpeg',
+        'IMAGE/i.png'
+    ];
+
+    const sectionMap = {
+        '.SCHOOL-SECTION': ['IMAGE/back.png','IMAGE/s.jpeg','IMAGE/c.jpeg','IMAGE/cc.jpeg','IMAGE/i.png'],
+        '.why-rmis': ['IMAGE/computer.jpeg','IMAGE/s.jpeg','IMAGE/lab.jpeg','IMAGE/c.jpeg','IMAGE/g.jpeg'],
+        '.partnership-section': ['IMAGE/vv.jpeg','IMAGE/c.jpeg','IMAGE/l.jpeg','IMAGE/f.jpeg','IMAGE/s.jpeg'],
+        '.facilities-section': ['IMAGE/s.jpeg','IMAGE/lab.jpeg','IMAGE/computer.jpeg','IMAGE/cc.jpeg','IMAGE/bus.jpeg'],
+        '.news-media-section': ['IMAGE/ga.jpeg','IMAGE/g.jpeg','IMAGE/gg.jpeg','IMAGE/cc.jpeg','IMAGE/i.png'],
+        '.leadership-section': ['IMAGE/back.png','IMAGE/c.jpeg','IMAGE/s.jpeg','IMAGE/cc.jpeg','IMAGE/f.jpeg'],
+        '.prep-section': ['IMAGE/back.png','IMAGE/computer.jpeg','IMAGE/lab.jpeg','IMAGE/c.jpeg','IMAGE/i.png'],
+        '.admission-open': ['IMAGE/back.png','IMAGE/s.jpeg','IMAGE/c.jpeg','IMAGE/cc.jpeg','IMAGE/u.png']
+    };
+
+    Object.entries(sectionMap).forEach(([selector, images]) => {
+        document.querySelectorAll(selector).forEach(section => {
+            if (section.querySelector(':scope > .section-bg-slider')) return;
+
+            section.classList.add('rmis-image-section');
+
+            const slider = document.createElement('div');
+            slider.className = 'section-bg-slider';
+            slider.setAttribute('aria-hidden', 'true');
+
+            images.forEach((src, index) => {
+                const slide = document.createElement('span');
+                slide.className = 'section-bg-slide' + (index === 0 ? ' active' : '');
+                slide.style.backgroundImage = `url("${src}")`;
+                slide.style.animationDelay = `${index * 5}s`;
+                slider.appendChild(slide);
+            });
+
+            const overlay = document.createElement('div');
+            overlay.className = 'section-bg-overlay';
+            overlay.setAttribute('aria-hidden', 'true');
+
+            section.prepend(overlay);
+            section.prepend(slider);
+        });
+    });
+
+    /* HERO: existing 10-image slider, 5 seconds */
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    let heroIndex = 0;
+    if (heroSlides.length > 1) {
+        setInterval(() => {
+            heroSlides[heroIndex].classList.remove('active');
+            heroIndex = (heroIndex + 1) % heroSlides.length;
+            heroSlides[heroIndex].classList.add('active');
+        }, 5000);
+    }
+
+    /* EVENTS: responsive auto slider */
+    let eventPosition = 0;
+    const eventTrack = document.getElementById('eventsTrack');
+    const eventSlides = document.querySelectorAll('.event-slide');
+    function getVisibleEvents() {
+        if (window.innerWidth <= 600) return 1;
+        if (window.innerWidth <= 1000) return 2;
+        return 4;
+    }
+    function updateEvents() {
+        if (!eventTrack || !eventSlides.length) return;
+        const visible = getVisibleEvents();
+        const slideWidth = eventSlides[0].offsetWidth + 15;
+        const maxPosition = Math.max(0, eventSlides.length - visible);
+        if (eventPosition > maxPosition) eventPosition = 0;
+        eventTrack.style.transform = `translateX(-${eventPosition * slideWidth}px)`;
+    }
+    window.nextEvent = function () {
+        const visible = getVisibleEvents();
+        const maxPosition = Math.max(0, eventSlides.length - visible);
+        eventPosition = eventPosition >= maxPosition ? 0 : eventPosition + 1;
+        updateEvents();
+    };
+    window.previousEvent = function () {
+        const visible = getVisibleEvents();
+        const maxPosition = Math.max(0, eventSlides.length - visible);
+        eventPosition = eventPosition <= 0 ? maxPosition : eventPosition - 1;
+        updateEvents();
+    };
+    if (eventSlides.length) {
+        updateEvents();
+        setInterval(window.nextEvent, 3500);
+        window.addEventListener('resize', () => {
+            eventPosition = 0;
+            updateEvents();
+        });
+    }
+
+    /* MOBILE NAVIGATION */
+    const heroMenu = document.getElementById('heroMenu');
+    const heroNav = document.querySelector('.hero-nav');
+    if (heroMenu && heroNav) {
+        heroMenu.addEventListener('click', () => {
+            heroNav.classList.toggle('active');
+            const icon = heroMenu.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-bars', !heroNav.classList.contains('active'));
+                icon.classList.toggle('fa-xmark', heroNav.classList.contains('active'));
+            }
+        });
+        heroNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => heroNav.classList.remove('active'));
+        });
+    }
+});
+</script>
+
+
+<script>
+/* RMIS Card Image Slider — 3 second auto slide */
+document.addEventListener('DOMContentLoaded', function () {
+  const cards = document.querySelectorAll('.rmis-sliding-card');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  cards.forEach((card, cardIndex) => {
+    const images = (card.dataset.images || '').split('|').map(x => x.trim()).filter(Boolean);
+    if (!images.length) return;
+
+    let index = 0;
+    card.style.setProperty('--rmis-card-image', `url("${images[0]}")`);
+    card.style.setProperty('--rmis-card-index', '0');
+
+    const dots = document.createElement('div');
+    dots.className = 'rmis-card-dots';
+    images.forEach((_, i) => {
+      const dot = document.createElement('span');
+      dot.className = i === 0 ? 'active' : '';
+      dots.appendChild(dot);
+    });
+    card.appendChild(dots);
+
+    const show = (next) => {
+      index = next % images.length;
+      card.style.setProperty('--rmis-card-image', `url("${images[index]}")`);
+      card.style.setProperty('--rmis-card-index', String(index));
+      dots.querySelectorAll('span').forEach((dot, i) => dot.classList.toggle('active', i === index));
+    };
+
+    // Hover pauses the current card for a cleaner reading experience.
+    let timer = null;
+    const start = () => {
+      if (reduceMotion || images.length < 2) return;
+      clearInterval(timer);
+      timer = setInterval(() => show(index + 1), 3000);
+    };
+    const stop = () => clearInterval(timer);
+    card.addEventListener('mouseenter', stop);
+    card.addEventListener('mouseleave', start);
+    start();
+  });
+});
+</script>
+
+</body>
 </html>

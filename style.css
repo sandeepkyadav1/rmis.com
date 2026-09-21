@@ -4709,3 +4709,447 @@ nav{
     }
 
 }
+/* =========================================================
+   RMIS PREMIUM SECTION BACKGROUND SYSTEM
+   5-second automatic image slider + dark glass overlay
+========================================================= */
+
+.rmis-image-section {
+    position: relative !important;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.rmis-image-section > .section-bg-slider,
+.rmis-image-section > .section-bg-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.rmis-image-section > .section-bg-slider {
+    z-index: -2;
+}
+
+.rmis-image-section > .section-bg-overlay {
+    z-index: -1;
+    background:
+        linear-gradient(135deg, rgba(4, 22, 52, .82), rgba(15, 55, 110, .55)),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.28));
+    backdrop-filter: blur(1px);
+}
+
+.section-bg-slide {
+    position: absolute;
+    inset: -3%;
+    display: block;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(1.06);
+    animation: rmisSectionPhoto 25s infinite ease-in-out;
+    will-change: opacity, transform;
+}
+
+.section-bg-slide.active { opacity: 1; }
+
+@keyframes rmisSectionPhoto {
+    0%   { opacity: 0; transform: scale(1.06); }
+    4%   { opacity: 1; }
+    20%  { opacity: 1; transform: scale(1); }
+    24%  { opacity: 0; transform: scale(1.04); }
+    100% { opacity: 0; transform: scale(1.06); }
+}
+
+/* Keep all section content above the photographic layer */
+.rmis-image-section > *:not(.section-bg-slider):not(.section-bg-overlay) {
+    position: relative;
+    z-index: 2;
+}
+
+/* Premium section readability */
+.SCHOOL-SECTION,
+.why-rmis,
+.partnership-section,
+.facilities-section,
+.news-media-section,
+.leadership-section,
+.prep-section,
+.admission-open {
+    min-height: 520px;
+    background: transparent !important;
+}
+
+/* Glass headings/cards while retaining the original content */
+.SCHOOL-SECTION > h1,
+.SCHOOL-SECTION > p,
+.why-rmis > h1,
+.why-rmis > .why-subtitle,
+.partnership-heading,
+.facilities-heading,
+.leadership-heading,
+.prep-heading {
+    text-shadow: 0 2px 12px rgba(0,0,0,.35);
+}
+
+.SCHOOL-SECTION > h1,
+.why-rmis > h1,
+.facilities-heading h1,
+.leadership-heading h1,
+.prep-heading h2 {
+    color: #fff !important;
+}
+
+.SCHOOL-SECTION > p,
+.why-rmis > .why-subtitle,
+.facilities-heading p,
+.leadership-heading p,
+.prep-heading p {
+    color: rgba(255,255,255,.92) !important;
+}
+
+.school-box,
+.why-box,
+.partnership-card,
+.facility-card,
+.news-feature-card,
+.leader-card,
+.prep-card {
+    border: 1px solid rgba(255,255,255,.22);
+    box-shadow: 0 18px 45px rgba(0,0,0,.20);
+}
+
+.school-box:hover,
+.why-box:hover,
+.partnership-card:hover,
+.facility-card:hover,
+.news-feature-card:hover,
+.leader-card:hover,
+.prep-card:hover {
+    transform: translateY(-10px) scale(1.015);
+}
+
+/* Better buttons / links */
+.school-box a,
+.hero-btn,
+.partnership-btn,
+.facility-content a,
+.feature-btn,
+.prep-btn,
+.admission-primary,
+.admission-secondary,
+.all-events-button a,
+.map-button {
+    transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+
+.school-box a:hover,
+.hero-btn:hover,
+.partnership-btn:hover,
+.feature-btn:hover,
+.prep-btn:hover,
+.admission-primary:hover,
+.admission-secondary:hover,
+.all-events-button a:hover,
+.map-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0,0,0,.20);
+}
+
+/* HERO improvements */
+.rmis-hero {
+    overflow: hidden;
+}
+.hero-slide {
+    transition: opacity 1.2s ease, transform 6s ease;
+}
+.hero-slide.active {
+    transform: scale(1.03);
+}
+.hero-overlay {
+    background: linear-gradient(135deg, rgba(0,20,50,.78), rgba(0,70,140,.38), rgba(0,0,0,.40)) !important;
+}
+
+/* Mobile: clean full-width layout and comfortable touch targets */
+@media (max-width: 768px) {
+    .rmis-image-section {
+        min-height: auto;
+        padding-top: 65px !important;
+        padding-bottom: 65px !important;
+    }
+
+    .section-bg-slide {
+        background-position: center center;
+        animation-duration: 25s;
+    }
+
+    .rmis-image-section > .section-bg-overlay {
+        background: linear-gradient(180deg, rgba(3,18,42,.86), rgba(8,38,78,.72));
+    }
+
+    .SCHOOL-SECTION,
+    .why-rmis,
+    .partnership-section,
+    .facilities-section,
+    .news-media-section,
+    .leadership-section,
+    .prep-section,
+    .admission-open {
+        min-height: 0;
+    }
+
+    .school-box,
+    .why-box,
+    .partnership-card,
+    .facility-card,
+    .news-feature-card,
+    .leader-card,
+    .prep-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .hero-header {
+        padding: 12px 18px !important;
+    }
+
+    .hero-logo img {
+        max-width: 145px;
+        height: auto;
+    }
+
+    .hero-nav {
+        position: fixed !important;
+        top: 0;
+        right: -100%;
+        width: min(82vw, 330px);
+        height: 100vh;
+        padding: 90px 24px 30px !important;
+        background: rgba(5, 25, 60, .97);
+        backdrop-filter: blur(16px);
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 4px !important;
+        overflow-y: auto;
+        transition: right .35s ease;
+        z-index: 9999;
+        box-shadow: -15px 0 40px rgba(0,0,0,.25);
+    }
+
+    .hero-nav.active {
+        right: 0;
+    }
+
+    .hero-nav a {
+        width: 100%;
+        padding: 12px 10px !important;
+        border-radius: 8px;
+    }
+
+    .hero-nav a:hover {
+        background: rgba(255,255,255,.12);
+    }
+
+    .hero-menu {
+        display: flex !important;
+        position: relative;
+        z-index: 10000;
+    }
+
+    .rmis-topbar {
+        flex-direction: column;
+        gap: 8px;
+        padding: 7px 12px !important;
+    }
+
+    .top-contact {
+        display: none !important;
+    }
+
+    .notice-area {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: clamp(30px, 10vw, 46px) !important;
+        line-height: 1.05;
+    }
+
+    .hero-description {
+        font-size: 14px !important;
+        line-height: 1.6;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: min(100%, 330px);
+        margin-inline: auto;
+    }
+
+    .hero-btn {
+        width: 100%;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+}
+
+/* Accessibility: respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .section-bg-slide,
+    .hero-slide {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* =========================================================
+   RMIS CARD DESIGN — OPTION 1: PREMIUM IMAGE SLIDER CARDS
+   Every major card gets a 3-second image transition.
+========================================================= */
+.rmis-sliding-card{
+  --rmis-card-image: none;
+  position:relative !important;
+  overflow:hidden !important;
+  isolation:isolate;
+  background-image:var(--rmis-card-image) !important;
+  background-size:cover !important;
+  background-position:center !important;
+  background-repeat:no-repeat !important;
+  transition:transform .45s ease, box-shadow .45s ease, background-position .8s ease !important;
+}
+.rmis-sliding-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    linear-gradient(180deg,rgba(4,15,35,.18) 0%,rgba(4,15,35,.48) 48%,rgba(2,8,22,.90) 100%),
+    linear-gradient(135deg,rgba(13,75,145,.18),rgba(0,0,0,.18));
+  transition:background .4s ease;
+}
+.rmis-sliding-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:inherit;
+  box-shadow:inset 0 0 45px rgba(255,255,255,.05);
+  pointer-events:none;
+}
+.rmis-sliding-card:hover{
+  transform:translateY(-10px) scale(1.012) !important;
+  box-shadow:0 24px 55px rgba(0,0,0,.25),0 0 0 1px rgba(255,255,255,.12) !important;
+  background-position:center 45% !important;
+}
+.rmis-sliding-card:hover::before{
+  background:
+    linear-gradient(180deg,rgba(3,15,35,.08) 0%,rgba(4,15,35,.40) 48%,rgba(2,8,22,.86) 100%),
+    linear-gradient(135deg,rgba(0,115,255,.20),rgba(0,0,0,.12));
+}
+
+/* Keep card content above the image and overlay. */
+.rmis-sliding-card > *:not(.rmis-card-dots){
+  position:relative;
+  z-index:2;
+}
+.rmis-sliding-card h1,.rmis-sliding-card h2,.rmis-sliding-card h3,
+.rmis-sliding-card p,.rmis-sliding-card span,.rmis-sliding-card a,
+.rmis-sliding-card i{ text-shadow:0 2px 12px rgba(0,0,0,.55); }
+
+/* Glass content surfaces where the original card has a content wrapper. */
+.rmis-sliding-card .partnership-content,
+.rmis-sliding-card .facility-content,
+.rmis-sliding-card .leader-content,
+.rmis-sliding-card .prep-overlay,
+.rmis-sliding-card .feature-content{
+  color:#fff !important;
+}
+.rmis-sliding-card .partnership-content h3,
+.rmis-sliding-card .facility-content h2,
+.rmis-sliding-card .leader-content h2,
+.rmis-sliding-card .leader-content h3,
+.rmis-sliding-card .prep-overlay h3,
+.rmis-sliding-card .feature-content h3,
+.rmis-sliding-card .school-box h2,
+.rmis-sliding-card .why-box h3{
+  color:#fff !important;
+}
+.rmis-sliding-card .partnership-content p,
+.rmis-sliding-card .facility-content p,
+.rmis-sliding-card .leader-content p,
+.rmis-sliding-card .prep-overlay p,
+.rmis-sliding-card .feature-content p,
+.rmis-sliding-card .school-box p,
+.rmis-sliding-card .why-box p{
+  color:rgba(255,255,255,.90) !important;
+}
+
+/* Image indicator dots. */
+.rmis-card-dots{
+  position:absolute !important;
+  z-index:20 !important;
+  left:18px;
+  bottom:16px;
+  display:flex;
+  gap:6px;
+  padding:6px 8px;
+  border-radius:999px;
+  background:rgba(0,0,0,.28);
+  backdrop-filter:blur(8px);
+  pointer-events:none;
+}
+.rmis-card-dots span{
+  display:block;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:rgba(255,255,255,.55);
+  box-shadow:none !important;
+  transition:.3s ease;
+}
+.rmis-card-dots span.active{
+  width:20px;
+  border-radius:10px;
+  background:#fff;
+}
+
+/* Card-specific sizing/polish. */
+.school-box.rmis-sliding-card{min-height:270px;display:flex;flex-direction:column;justify-content:center;padding:32px 24px !important;}
+.why-box.rmis-sliding-card{min-height:260px;}
+.partnership-card.rmis-sliding-card{min-height:390px;}
+.facility-card.rmis-sliding-card{min-height:330px;}
+.leader-card.rmis-sliding-card{min-height:420px;}
+.prep-card.rmis-sliding-card{min-height:430px;}
+.news-feature-card.rmis-sliding-card{min-height:480px;}
+
+/* Make existing feature image areas premium too, while the card itself slides. */
+.news-feature-card.rmis-sliding-card .feature-image{background:transparent !important;}
+.news-feature-card.rmis-sliding-card .feature-image img{opacity:0 !important;}
+
+/* Buttons remain clearly clickable. */
+.rmis-sliding-card a{
+  position:relative;
+  z-index:10;
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.rmis-sliding-card a:hover{transform:translateX(4px);}
+
+/* Mobile: single-column cards and touch-friendly spacing. */
+@media (max-width:900px){
+  .partnership-container,.facilities-container,.leadership-container,.prep-container,.news-feature-grid{gap:18px !important;}
+  .rmis-sliding-card{min-height:320px !important;}
+}
+@media (max-width:600px){
+  .school-box.rmis-sliding-card,.why-box.rmis-sliding-card,
+  .partnership-card.rmis-sliding-card,.facility-card.rmis-sliding-card,
+  .leader-card.rmis-sliding-card,.prep-card.rmis-sliding-card,
+  .news-feature-card.rmis-sliding-card{min-height:300px !important;}
+  .rmis-sliding-card:hover{transform:translateY(-5px) !important;}
+  .rmis-card-dots{left:14px;bottom:12px;}
+}
